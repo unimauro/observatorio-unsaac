@@ -294,16 +294,20 @@ function renderPlan() {
     return;
   }
   const reg = P.resumen?.por_regimen_airhsp || [];
+  const hasPay = P.personas.some(x => x.remun > 0); // ¿hay sueldos nominales?
   // KPIs planilla
   const total = P._meta?.total_planilla_airhsp || reg.reduce((s, x) => s + x.n, 0);
-  const doc = reg.find(x => /docente/i.test(x.nombre));
+  const doc = reg.find(x => /docente|carreras especiales/i.test(x.nombre));
+  const adm = reg.find(x => /276|administrativo nombrado/i.test(x.nombre));
   const kp = document.getElementById('planKpis');
-  if (kp) kp.innerHTML = [
+  const kpis = [
     ['Plazas totales', fmtN(total), 'planilla AIRHSP'],
     ['Docentes', doc ? fmtN(doc.n) : '—', doc ? 'prom S/ ' + fmtN(doc.sueldo_promedio) : ''],
-    ['Nominal con nombre', fmtN(P.personas.length), 'régimen CAS (PTE)'],
-    ['Remun. máx (CAS)', 'S/ ' + fmtN(Math.round(P.resumen?.remun?.max || 0)), P.personas[0]?.cargo || ''],
-  ].map(x => `<div class="kpi"><div class="v">${x[1]}</div><div class="l">${x[0]}</div><div class="s">${x[2] || ''}</div></div>`).join('');
+    ['Administrativos', adm ? fmtN(adm.n) : '—', adm ? 'prom S/ ' + fmtN(adm.sueldo_promedio) : 'DL 276'],
+  ];
+  if (hasPay) kpis.push(['Remun. máx (nominal)', 'S/ ' + fmtN(Math.round(P.resumen?.remun?.max || 0)), P.personas[0]?.cargo || '']);
+  else kpis.push(['Nominal público', fmtN(P.personas.length), 'directorio de autoridades']);
+  if (kp) kp.innerHTML = kpis.map(x => `<div class="kpi"><div class="v">${x[1]}</div><div class="l">${x[0]}</div><div class="s">${x[2] || ''}</div></div>`).join('');
   // charts régimen
   if (reg.length) {
     const short = s => s.replace(/\s*\(.*?\)/, '').replace('D. Leg. Nº', 'DL').replace('D. Leg.', 'DL').replace('Ley Nº', 'Ley');
@@ -313,20 +317,24 @@ function renderPlan() {
   // periodo
   const MES = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
   const periodo = P._meta?.mes ? `${MES[P._meta.mes]} ${P._meta.anio}` : (P._meta?.anio || '');
-  // tabla nominal con buscador (todas las personas, filtrable)
+  // tabla nominal con buscador
+  const titulo = hasPay ? 'Personal nominal (régimen CAS)' : 'Directorio de autoridades y jefaturas';
+  const notaTabla = hasPay
+    ? `La lista nominal (nombre+sueldo) del Portal de Transparencia corresponde al régimen CAS; los docentes y el personal DL-276 figuran en el agregado AIRHSP (arriba), sin sueldo individual público.`
+    : `El Portal de Transparencia de la UNSAAC publica el directorio de autoridades y jefaturas (sin remuneración individual); el conteo y sueldo promedio de docentes y administrativos figuran en el agregado AIRHSP (arriba).`;
   w.innerHTML = `<div class="card">
-    <h3>Personal nominal (régimen CAS) · ${fmtN(P.personas.length)} personas${periodo ? ' · ' + periodo : ''}</h3>
+    <h3>${titulo} · ${fmtN(P.personas.length)}${periodo ? ' · ' + periodo : ''}</h3>
     <input id="planSearch" placeholder="🔎 Buscar por nombre, cargo o dependencia…" style="width:100%;padding:10px 12px;margin:8px 0 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--tinta);font-size:14px">
-    <div class="scroll"><table><thead><tr><th>Nombre</th><th>Cargo</th><th>Dependencia</th><th class="n">Remun. (S/)</th></tr></thead><tbody id="planBody"></tbody></table></div>
+    <div class="scroll"><table><thead><tr><th>Nombre</th><th>Cargo</th><th>Dependencia</th>${hasPay ? '<th class="n">Remun. (S/)</th>' : ''}</tr></thead><tbody id="planBody"></tbody></table></div>
     <p class="note" id="planCount"></p>
-    <p class="note">Fuente: ${P._meta?.fuente || 'PTE / AIRHSP'}${periodo ? ' · periodo <strong>' + periodo + '</strong>' : ''}. La lista nominal (nombre+sueldo) del Portal de Transparencia corresponde al régimen CAS; los docentes y el personal DL-276 figuran en el agregado AIRHSP (arriba), sin sueldo individual público. Solo personal — nunca estudiantes.</p>
+    <p class="note">Fuente: ${P._meta?.fuente || 'PTE / AIRHSP'}${periodo ? ' · periodo <strong>' + periodo + '</strong>' : ''}. ${notaTabla} Solo personal — nunca estudiantes.</p>
   </div>`;
   const body = document.getElementById('planBody'), cnt = document.getElementById('planCount'), inp = document.getElementById('planSearch');
   const draw = (q = '') => {
     q = q.trim().toLowerCase();
     const rows = P.personas.filter(x => !q || (`${x.nombre} ${x.cargo || ''} ${x.dependencia || ''}`).toLowerCase().includes(q));
-    body.innerHTML = rows.slice(0, 400).map(x => `<tr><td>${x.nombre}</td><td>${x.cargo || '—'}</td><td>${x.dependencia || '—'}</td><td class="n">${x.remun ? fmtN(Math.round(x.remun)) : '—'}</td></tr>`).join('');
-    cnt.textContent = q ? `${rows.length} resultado(s)` + (rows.length > 400 ? ' (mostrando 400)' : '') : `Mostrando ${Math.min(400, rows.length)} de ${rows.length}, ordenados por remuneración`;
+    body.innerHTML = rows.slice(0, 400).map(x => `<tr><td>${x.nombre}</td><td>${x.cargo || '—'}</td><td>${x.dependencia || '—'}</td>${hasPay ? `<td class="n">${x.remun ? fmtN(Math.round(x.remun)) : '—'}</td>` : ''}</tr>`).join('');
+    cnt.textContent = q ? `${rows.length} resultado(s)` + (rows.length > 400 ? ' (mostrando 400)' : '') : `Mostrando ${Math.min(400, rows.length)} de ${rows.length}`;
   };
   inp.addEventListener('input', e => draw(e.target.value));
   draw();

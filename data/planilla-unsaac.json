@@ -1,0 +1,223 @@
+{
+ "_meta": {
+  "fuente": "peru-transparente (datos del sector publico: directorio de funcionarios del Portal gob.pe + agregado AIRHSP por pliego/regimen)",
+  "entidad": "Universidad Nacional de San Antonio Abad del Cusco (UNSAAC) - pliego 511",
+  "anio": 2026,
+  "mes": 6,
+  "nota": "Solo docentes/funcionarios/personal administrativo. No incluye estudiantes. A diferencia de otras universidades, los datos LOCALES de peru-transparente NO contienen la planilla nominal individual (con remuneracion) de la UNSAAC (id_entidad PTE 10443): ni funcionarios.csv, ni funcionarios_historico.csv, ni funcionarios_clave.csv registran personas para esta entidad. La unica lista NOMINAL disponible es el directorio de autoridades/funcionarios publicado en gob.pe (20 cargos de alta direccion y jefaturas administrativas, sin remuneracion individual; captura 2026-06). El grueso del personal -docentes universitarios (regimen AIRHSP 'Carreras Especiales', 1639 plazas), administrativo nombrado D.Leg.276 (773) y CAS (431)- solo existe como agregado AIRHSP del pliego 'U.N. DE SAN ANTONIO ABAD DEL CUSCO' (conteo + sueldo promedio por regimen; ver resumen.por_regimen_airhsp). Para la planilla nominal completa habria que obtenerla del Portal de Transparencia Estandar de la UNSAAC o del AIRHSP nominal. No se inventaron personas ni sueldos.",
+  "total": 20,
+  "total_planilla_airhsp": 2983
+ },
+ "resumen": {
+  "por_regimen_nominal": [
+   {
+    "nombre": "Funcionarios / autoridades (directorio gob.pe, sin dato de regimen ni remuneracion)",
+    "n": 20
+   }
+  ],
+  "por_regimen_airhsp": [
+   {
+    "nombre": "Carreras Especiales (docentes universitarios)",
+    "n": 1639,
+    "sueldo_promedio": 4809
+   },
+   {
+    "nombre": "D. Leg. Nº 276 (administrativo nombrado)",
+    "n": 773,
+    "sueldo_promedio": 3671
+   },
+   {
+    "nombre": "D. Leg. 1057 CAS",
+    "n": 431,
+    "sueldo_promedio": 2299
+   },
+   {
+    "nombre": "Sin Régimen Laboral",
+    "n": 137,
+    "sueldo_promedio": 1520
+   },
+   {
+    "nombre": "Ley Nº 30057 SERVIR",
+    "n": 3,
+    "sueldo_promedio": 23333
+   }
+  ],
+  "por_categoria": [
+   {
+    "nombre": "funcionario",
+    "n": 20
+   }
+  ],
+  "remun": {
+   "prom": null,
+   "mediana": null,
+   "min": null,
+   "max": null,
+   "n_con_dato": 0,
+   "n_cero_o_licencia": 0,
+   "nota": "El directorio de funcionarios de gob.pe no publica remuneracion individual, por eso no hay estadisticos nominales. Las remuneraciones disponibles son promedios por regimen del AIRHSP (ver resumen.por_regimen_airhsp)."
+  }
+ },
+ "personas": [
+  {
+   "nombre": "Enciso Rodas Lauro",
+   "cargo": "RECTOR",
+   "dependencia": "RECTORADO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Alejandro Ttito Ttica",
+   "cargo": "VICERRECTOR ACADÉMICO",
+   "dependencia": "VICERRECTORADO ACADÉMICO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Felix Hurtado Huaman",
+   "cargo": "VICERRECTOR DE INVESTIGACUÓN",
+   "dependencia": "VICERRECTORADO DE INVESTIGACIÓN",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Kelma Ruth Mayhua Curo",
+   "cargo": "DEFENSOR UNIVERSITARIO",
+   "dependencia": "DEFENSORÍA UNIVERSITARIA",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Leoncio Solis Quispe",
+   "cargo": "DIRECTOR DE LA ESCUELA DE POSGRADO",
+   "dependencia": "ESCUELA DE POSGRADO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Miriam Cajigas Chávez",
+   "cargo": "Secretaria General(e)",
+   "dependencia": "SECRETARÍA GENERAL",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Gustavo Gabriel Vargas Castillo",
+   "cargo": "Director de DIGA",
+   "dependencia": "DIRECCIÓN GENERAL DE ADMINISTRACIÓN (DIGA)",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Karina Leonor Gutierrez Leon",
+   "cargo": "Jefe de la Unidad Ejecutora de Inversiones",
+   "dependencia": "UNIDAD EJECUTORA DE INVERSIONES",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Mercedes Pinto Castillo",
+   "cargo": "Jefe de la Oficina de Planeamiento y Presupuesto",
+   "dependencia": "OFICINA DE PLANEAMIENTO Y PRESUPUESTO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Cruz Palomino Carmen Luz",
+   "cargo": "Jefe de la Unidad de Planeamiento y Presupuesto",
+   "dependencia": "OFICINA DE PLANEAMIENTO Y PRESUPUESTO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Shirley Ruth Velazque Rojas",
+   "cargo": "Jefe de la Unidad de Recursos Humanos",
+   "dependencia": "UNIDAD DE RECURSOS HUMANOS",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Evelyn Palomino Quispe",
+   "cargo": "Jefe de la Unidad de Abastecimiento",
+   "dependencia": "UNIDAD DE ABASTECIMIENTO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Edith Sanchez Guevara",
+   "cargo": "Jefe de la Unidad de Finanzas",
+   "dependencia": "UNIDAD DE FINANZAS",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Dennis Ivan Candia Oviedo",
+   "cargo": "DIRECTOR DE ADMISION",
+   "dependencia": "DIRECCIÓN DE ADMISIÓN",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Miguel Angel Ccorihuaman Quispe",
+   "cargo": "Director del Centro de Pre Universitario(CEPRU)",
+   "dependencia": "CENTRO PRE UNIVERSITARIO (CEPRU)",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Oscar Ravelo Alferez",
+   "cargo": "Jefe Administrativo de la Oficina de Asesoría Jurídica",
+   "dependencia": "OFICINA DE ASESORÍA JURÍDICA",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Ever Rudy Cjuro Usca",
+   "cargo": "JEFE DE LA SUB UNIDAD DE INTEGRACION CONTABLE",
+   "dependencia": "SUB UNIDAD DE INTEGRACIÓN CONTABLE",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Durand Saavedra Rolando",
+   "cargo": "Jefe de la Unidad de Trámite Documentario",
+   "dependencia": "UNIDAD DE TRÁMITE DOCUMENTARIO",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Soledad Cuno Gonzales",
+   "cargo": "JEFE DE LA SUB UNIDAD DE TRIBUTACION",
+   "dependencia": "SUB UNIDAD DE TRIBUTACIÓN",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  },
+  {
+   "nombre": "Vilma Aurora Pacheco Sota",
+   "cargo": "DIRECTORA DE LA DIR. DE COOPERACION TECNICA INTERNACIONAL",
+   "dependencia": "DIRECCIÓN DE COOPERACIÓN TÉCNICA INTERNACIONAL",
+   "regimen": null,
+   "categoria": "funcionario",
+   "remun": null
+  }
+ ]
+}

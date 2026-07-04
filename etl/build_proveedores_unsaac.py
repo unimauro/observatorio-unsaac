@@ -6,8 +6,33 @@ def tp(ruc):
     p=str(ruc)[:2]
     return 'natural' if p in ('10','15') else 'empresa'
 
-# dueno/representante lookup (filled after WebSearch on datosperu.org)
-duenos={}
+# dueno/representante lookup (via datosperu.org). null = sin fuente confiable.
+duenos={
+ '20282062080':("Gerente general Ana Maria Galarza Suarez (desde 2009)",
+                "https://www.datosperu.org/empresa-avanzada-tecnologia-y-servicios-sac-20282062080.php"),
+ '20100240301':("Gerente general Victor Alfonso Manrique Lopez (desde 2020). Contratista de obras JDCONOSER, Arequipa",
+                "https://www.datosperu.org/empresa-jd-consultores-obras-y-servicios-soc-com-de-respo-limit-contratistas-generales-jdconoser-srl-20100240301.php"),
+ '20600280172':("Gerente general Joe Juvenal Farfan Cusihuaman (desde 2015). Opera Orion Supermercados",
+                "https://www.datosperu.org/empresa-papa-de-america-sociedad-anonima-papa-de-america-sa-20600280172.php"),
+ '20563896877':("Gerente general Raul Lazo Florez (desde 2019)",
+                "https://www.datosperu.org/empresa-teleredes-peru-sac-20563896877.php"),
+ '20603237120':("Gerente general Rodolfo Enrique Samanez Alarcon (desde 2018)",
+                "https://www.datosperu.org/empresa-equipos-analiticos-y-tecnologia-de-informacion-sac-equanti-sac-20603237120.php"),
+ '20521301237':("Gerente general Andy Ronal Sotomayor Torres (desde 2009)",
+                "https://www.datosperu.org/empresa-warem-sac-20521301237.php"),
+ '20545102766':("Gerente general Hernan Villalta Alvarado (desde 2011)",
+                "https://www.datosperu.org/empresa-nexusplus-sac-20545102766.php"),
+ '20604420165':("Gerente general Elizabeth Roca Quispe (desde 2022)",
+                "https://www.datosperu.org/empresa-grupo-tactico-allions-sac-20604420165.php"),
+ '20501262260':("Gerente general Jorge Luis Ramirez Melgar (desde 2001)",
+                "https://www.datosperu.org/empresa-gen-lab-del-peru-sac-20501262260.php"),
+ '20296395821':("Gerente general Jesus Angel Bustamante Recalde (desde 2008)",
+                "https://www.datosperu.org/empresa-diecom-srl-20296395821.php"),
+ '20515650297':("Gerente general Oscar Renan Olaechea Quino (desde 2007)",
+                "https://www.datosperu.org/empresa-picsa-peru-sac-20515650297.php"),
+ '20448320970':("Gerente general Edwin Cesar Luna Leonardo (desde 2022)",
+                "https://www.datosperu.org/empresa-superintendency-in-peruvian-services-sac-20448320970.php"),
+}
 
 rows=[]
 for Y in (2023,2024,2025):
