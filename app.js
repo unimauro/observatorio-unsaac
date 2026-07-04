@@ -1,10 +1,10 @@
 // Observatorio UNI — carga data/*.json y renderiza. Sin build, vanilla + Chart.js.
 const CFG = window.OBS_UNI_CONFIG || {};
-const GRANATE = '#b1461f', GRANATE2 = '#8a3216', ORO = '#c98a2b', TEAL = '#0e7c86';
+const GRANATE = '#158463', GRANATE2 = '#116a4f', ORO = '#d4a017', TEAL = '#0e7c86';
 const fmtM = v => 'S/ ' + (v / 1e6).toLocaleString('es-PE', { maximumFractionDigits: 1 }) + ' M';
 const fmtN = v => (v || 0).toLocaleString('es-PE');
 const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
-const ink = () => isDark() ? '#c3a9a2' : '#6b5f5a';
+const ink = () => isDark() ? '#9fc0b2' : '#5f736b';
 const grid = () => isDark() ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.06)';
 Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
 Chart.defaults.color = ink();
