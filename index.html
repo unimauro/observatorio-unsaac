@@ -158,6 +158,7 @@ footer{padding:34px 0;color:var(--muted);font-size:13px}
     <a href="#resumen">Resumen</a>
     <a href="#presupuesto">Presupuesto</a>
     <a href="#proveedores">Proveedores</a>
+    <a href="#comedor">🍲 Comedor</a>
     <a href="#investigacion">Investigación</a>
     <a href="#valor">Gasto↔valor</a>
     <a href="#planilla">Planilla</a>
@@ -210,6 +211,24 @@ footer{padding:34px 0;color:var(--muted);font-size:13px}
   <div id="provPersonas" style="margin-top:20px"></div>
 </div></section>
 
+<!-- COMEDOR UNIVERSITARIO -->
+<section id="comedor"><div class="wrap">
+  <div class="eyebrow">Bienestar estudiantil</div>
+  <h2>🍲 Comedor universitario</h2>
+  <p class="lead">¿Qué contrató la UNSAAC para alimentar a sus estudiantes, con quién, por cuánto y hasta cuándo? Cruzamos procesos de selección (OECE/CONOSCE + OCDS), órdenes de compra/servicio (incluidas las menores a 8 UIT) y el presupuesto (MEF). Solo datos públicos; cada cifra con su fuente.</p>
+  <div class="kpis" id="comKpis" style="margin-bottom:20px"></div>
+  <div id="comCobertura"></div>
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><h3>Víveres: adjudicado vs. desierto por año (S/)</h3><div class="chart-box"><canvas id="cComAnio"></canvas></div><p class="note">Procesos de selección de alimentos del comedor + servicio de alimentación en filiales. "Desierto" = monto referencial de ítems que nadie ganó.</p></div>
+    <div class="card"><h3>Pagos de alimentos del comedor por mes (S/)</h3><div class="chart-box"><canvas id="cComMes"></canvas></div><p class="note" id="comMesNote"></p></div>
+  </div>
+  <div id="comPresu" style="margin-top:20px"></div>
+  <div id="comProv" style="margin-top:20px"></div>
+  <div id="comAlertas" style="margin-top:20px"></div>
+  <div id="comProcesos" style="margin-top:20px"></div>
+  <div id="comOrdenes" style="margin-top:20px"></div>
+</div></section>
+
 <!-- INVESTIGACIÓN -->
 <section id="investigacion"><div class="wrap">
   <div class="eyebrow">Valor público</div>
@@ -239,7 +258,7 @@ footer{padding:34px 0;color:var(--muted);font-size:13px}
 <section id="planilla"><div class="wrap">
   <div class="eyebrow">Quiénes trabajan</div>
   <h2>Planilla y remuneraciones</h2>
-  <p class="lead">Personal de la UNSAAC (docentes, funcionarios y administrativos) y sus remuneraciones, a partir de datos públicos del Estado (Portal de Transparencia + AIRHSP). Nunca estudiantes.</p>
+  <p class="lead">Personal de la UNSAAC (docentes, funcionarios y administrativos) y sus remuneraciones, con nombre, cargo y remuneración mensual (PAP 2026 nominal publicado por la propia UNSAAC) y el agregado de plazas AIRHSP. Son servidores públicos: la Ley 27806 obliga a publicar sus remuneraciones. Nunca estudiantes.</p>
   <div class="kpis" id="planKpis" style="margin-bottom:20px"></div>
   <div class="grid2">
     <div class="card"><h3>Plazas por régimen laboral (AIRHSP)</h3><div class="chart-box"><canvas id="cReg"></canvas></div></div>
